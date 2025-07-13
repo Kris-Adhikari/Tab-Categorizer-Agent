@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: #f0f0f0;
+  }
+  
+  h2 {
+    margin: 0 0 6px 0;
+  }
+  
+  select,
+  button {
+    margin: 5px 0;
+    width: 100%;
+    padding: 5px;
+  }
+  
+  #controls {
+    flex: 0 0 auto;
+  }
+  
+  #categorizedTabs {
+    flex: 1 1 0;
+    overflow-y: auto;
+    margin-top: 10px;
+  }
+  
+  .category {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .tab-item {
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+  

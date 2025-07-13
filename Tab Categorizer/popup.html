@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tab Categorizer</title>
+<style>
+html, body { height: 100%; max-height: 600px; }
+body {
+  width: 340px;
+  margin: 0;
+  padding: 16px 12px 0 12px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg,#3a3a3a 0%,#232526 100%);
+  color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.18);
+}
+h2 { margin: 0 0 14px; font-size: 22px; text-align: center; letter-spacing: 1px; }
+#addCategoryForm { display: flex; margin-bottom: 14px; border-radius: 18px; overflow: hidden; }
+#newCategoryName { flex: 1; padding: 10px; border: 0; border-radius: 18px 0 0 18px; background:#444; color:#fff; font-weight:bold; }
+#addCategoryForm button { padding: 10px 18px; border: 0; border-radius: 0 18px 18px 0; background: linear-gradient(135deg,#5dade2 0%,#48c6ef 100%); color:#fff; font-weight:bold; cursor:pointer; }
+#mainTabList, #categories { overflow-y: auto; padding-right: 4px; }
+#mainTabList {
+  max-height: 180px;
+  margin-bottom: 12px;
+  border: 2px solid #444;
+  border-radius: 18px;
+  padding: 10px;
+  background:#292929;
+  box-shadow: 0 2px 8px rgba(0,0,0,.10);
+}
+#categories {
+  max-height: 170px;
+  border: 2px solid #444;
+  border-radius: 18px;
+  padding: 10px;
+  background:#232526;
+  box-shadow: 0 2px 8px rgba(0,0,0,.10);
+}
+.tab { display:flex; align-items:center; background:#444; margin-bottom:10px; padding:10px; border-radius:14px; box-shadow:0 2px 8px rgba(0,0,0,.08); }
+.tab-favicon { width:18px; height:18px; margin-right:10px; }
+.tab-title { flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:15px; }
+.remove-tab { cursor:pointer; color:#ff6b6b; margin-left:10px; font-size:20px; }
+.category { margin-bottom:14px; border-radius:18px; background:#232526; }
+.category-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:10px 14px; border-radius:14px; font-weight:bold; }
+.category-tabs { margin-left:24px; }
+.category-tabs .tab { font-size:13px; padding:8px; margin-bottom:8px; }
+.category-tabs .tab-favicon { width:16px; height:16px; }
+.category-tabs .remove-tab { font-size:18px; }
+.color-1{background:linear-gradient(135deg,#3498db 0%,#6dd5fa 100%);}
+.color-2{background:linear-gradient(135deg,#e74c3c 0%,#f7971e 100%);}
+.color-3{background:linear-gradient(135deg,#2ecc71 0%,#a8ff78 100%);}
+.color-4{background:linear-gradient(135deg,#9b59b6 0%,#e1bee7 100%);}
+.color-5{background:linear-gradient(135deg,#f1c40f 0%,#f9d423 100%);}
+.color-6{background:linear-gradient(135deg,#e67e22 0%,#f7971e 100%);}
+.color-7{background:linear-gradient(135deg,#1abc9c 0%,#48c6ef 100%);}
+.color-8{background:linear-gradient(135deg,#34495e 0%,#636e72 100%);}
+#chatContainer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  padding-top: 55px;
+  margin-top: -55px;
+  width: 100%;
+}
+#chatForm { display:flex; gap:6px; width:100%; }
+#chatInput { flex:1; padding:7px 10px; border:0; border-radius:12px; background:#333; color:#fff; }
+#chatForm button { padding:7px 14px; border:0; border-radius:12px; background:linear-gradient(135deg,#5dade2 0%,#48c6ef 100%); color:#fff; font-weight:bold; cursor:pointer; }
+#chatHistoryBtn { margin-top:6px; width:100%; padding:7px 0; border:0; border-radius:10px; background:#444; color:#fff; font-weight:bold; cursor:pointer; }
+#chatHistoryScreen { position:fixed; inset:0; display:none; padding:20px 10px; box-sizing:border-box; background:#232526; z-index:100; border-radius:24px; }
+</style>
+</head>
+<body>
+  <h2>Tab Categorizer</h2>
+  <form id="addCategoryForm">
+    <input type="text" id="newCategoryName" placeholder="New category name">
+    <button type="submit">Add</button>
+  </form>
+  <div id="mainTabList"></div>
+  <div id="categories"></div>
+  <div id="chatContainer">
+    <div id="chatResponse"></div>
+    <form id="chatForm">
+      <input id="chatInput" type="text" placeholder="Chat with your tabs..." autocomplete="off">
+      <button type="submit">Send</button>
+    </form>
+    <button id="chatHistoryBtn">Chat History</button>
+  </div>
+  <div id="chatHistoryScreen">
+    <button id="backToMainBtn">Back</button>
+    <div id="chatHistoryList" style="overflow-y:auto; height:400px;"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
